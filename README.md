@@ -65,6 +65,7 @@ Install dependencies:
 
 Run the server:
 python manage.py runserver
+![WhatsApp Image 2025-06-30 at 19 29 32](https://github.com/user-attachments/assets/37b580d3-c865-4eaf-acbd-6aabf15646b6)
 
 
 📌 Author
