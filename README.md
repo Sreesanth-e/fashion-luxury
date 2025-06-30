@@ -65,7 +65,14 @@ Install dependencies:
 
 Run the server:
 python manage.py runserver
-![WhatsApp Image 2025-06-30 at 19 29 32](https://github.com/user-attachments/assets/37b580d3-c865-4eaf-acbd-6aabf15646b6)
+
+SCREEN SHOTS : 
+![WhatsApp Image 2025-06-30 at 19 29 32](https://github.com/user-attachments/assets/f6e2bbb3-cbc8-4fdf-94dd-a76ab8cf24bb)
+![WhatsApp Image 2025-06-30 at 19 29 08](https://github.com/user-attachments/assets/05f35120-d5e2-4e6b-8901-60e1ae9a3846)
+![WhatsApp Image 2025-06-30 at 19 29 08 (1)](https://github.com/user-attachments/assets/43dd97f6-1f67-4c93-9a61-bef526356e93)
+![WhatsApp Image 2025-06-30 at 19 29 07](https://github.com/user-attachments/assets/756e413e-c972-40cd-b316-3cd6dfd5ced9)
+![WhatsApp Image 2025-06-30 at 19 29 07 (1)](https://github.com/user-attachments/assets/af598cb6-e6f2-4c44-92a8-004d85f05a1e)
+
 
 
 📌 Author
