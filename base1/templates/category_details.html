@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyomé - {{ category_name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --header-font: 'Cinzel', serif;
+            --black: #1a1a1a;
+            --cream: #f8f1e9;
+            --grey: #808080;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --max-width: 1400px;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--cream);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+            margin-left: 80px; /* Space for the sidebar */
+        }
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px; /* Narrow width for the sidebar */
+            height: 100vh; /* Full height of the viewport */
+            background: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            z-index: 100;
+            box-shadow: 2px 0 10px var(--shadow);
+        }
+        .sidebar__logo {
+            margin-bottom: 2rem; /* Space below logo */
+        }
+        .sidebar__logo a {
+            font-size: 1.8rem; /* Smaller logo */
+            font-weight: 700;
+            font-family: var(--header-font);
+            color: var(--cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            writing-mode: vertical-rl; /* Vertical text */
+            transform: rotate(180deg); /* Adjust orientation */
+        }
+        .sidebar__logo a:hover {
+            color: var(--grey);
+        }
+        .sidebar__links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Reduced gap for compactness */
+        }
+        .link a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem; /* Smaller font size */
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column; /* Stack icon and text vertically */
+            align-items: center;
+            gap: 0.3rem; /* Reduced gap */
+            position: relative;
+        }
+        .link a:hover {
+            color: var(--grey);
+        }
+        .link i {
+            font-size: 1.2rem; /* Icon size */
+        }
+        .cart-count {
+            background: var(--grey);
+            color: var(--cream);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            min-width: 16px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        .link a:hover .cart-count {
+            background: var(--cream);
+            color: var(--black);
+        }
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 20px 60px; /* Adjusted padding since no top navbar */
+        }
+        h1, h2 {
+            font-family: var(--header-font);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--black);
+            font-weight: 700;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+            margin: 12vh 0 2rem;
+        }
+        .section-title::after {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background: var(--grey);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+        }
+        .section-title:hover::after {
+            width: 100px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+        .product-card {
+            background: #fff;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+        .product-card:nth-child(5) { animation-delay: 1s; }
+        .product-card:nth-child(6) { animation-delay: 1.2s; }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        .product-image {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            background: var(--grey); /* Fallback if image fails */
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-info {
+            padding: 10px;
+            text-align: center;
+            background: #fff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .product-name {
+            font-size: 1.2rem;
+            font-family: var(--header-font);
+            text-decoration: none;
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .product-card:hover .product-name {
+            color: var(--grey);
+        }
+        .footer {
+            background: var(--black);
+            color: var(--cream);
+            border-top: 1px solid var(--grey);
+        }
+        /* Footer styles remain unchanged */
+        /* ... (footer styles unchanged) ... */
+        .footer {
+            background: var(--black);
+            color: var(--cream);
+            border-top: 1px solid var(--grey);
+        }
+        .footer__container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            padding: 4rem 1rem;
+        }
+        .footer__col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .footer__logo a {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: var(--header-font);
+            color: var(--cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+        }
+        .footer__logo a:hover {
+            color: var(--grey);
+        }
+        .footer__col h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+        .footer__col p {
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+        .footer__links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .footer__links a {
+            font-size: 0.9rem;
+            color: var(--cream);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer__links a:hover {
+            color: var(--grey);
+            padding-left: 0.5rem;
+        }
+        .footer__form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .footer__form input {
+            padding: 0.75rem;
+            border: 1px solid var(--cream);
+            background: transparent;
+            color: var(--cream);
+            border-radius: 5px;
+            flex: 1;
+        }
+        .footer__form input::placeholder {
+            color: var(--grey);
+        }
+        .footer__form button {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            background: var(--cream);
+            color: var(--black);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .footer__form button:hover {
+            background: var(--grey);
+            color: var(--cream);
+        }
+        .footer__socials {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer__socials a {
+            font-size: 1.5rem;
+            color: var(--cream);
+            transition: all 0.3s ease;
+        }
+        .footer__socials a:hover {
+            color: var(--grey);
+            transform: scale(1.1);
+        }
+        .footer__bar {
+            text-align: center;
+            padding: 1rem;
+            background: var(--black);
+            font-size: 0.85rem;
+            color: var(--grey);
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px; /* Narrower sidebar on smaller screens */
+            }
+            .sidebar__logo a {
+                font-size: 1.5rem;
+            }
+            .link a {
+                font-size: 0.8rem;
+            }
+            .link i {
+                font-size: 1rem;
+            }
+            body {
+                margin-left: 60px; /* Adjust body margin */
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin: 8vh 0 2rem;
+            }
+            .product-card {
+                height: 350px;
+            }
+            .product-image {
+                height: 65%;
+            }
+        }
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 50px; /* Even narrower */
+            }
+            .sidebar__logo a {
+                font-size: 1.2rem;
+            }
+            .link a {
+                font-size: 0.7rem;
+            }
+            .link i {
+                font-size: 0.9rem;
+            }
+            body {
+                margin-left: 50px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-card {
+                height: 300px;
+            }
+            .product-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar__logo"><a href="{% url 'product_list' %}">Vyomé</a></div>
+        <ul class="sidebar__links">
+            {% if category_name == 'Men' %}
+                <li class="link"><a href="#men"><i class="fas fa-male"></i>Men</a></li>
+            {% elif category_name == 'Women' %}
+                <li class="link"><a href="#women"><i class="fas fa-female"></i>Women</a></li>
+            {% elif category_name == 'Kids' %}
+                <li class="link"><a href="#kids"><i class="fas fa-child"></i>Kids</a></li>
+            {% elif category_name == 'Accessories' %}
+                <li class="link"><a href="#accessories"><i class="fas fa-gem"></i>Accessories</a></li>
+            {% endif %}
+            <li class="link">
+                <a href="{% url 'cart_view' %}">
+                    <i class="fas fa-shopping-cart"></i>Cart
+                    {% if cart_count > 0 %}
+                        <span class="cart-count">{{ cart_count }}</span>
+                    {% endif %}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <h2 class="section-title">{{ category_name }}</h2>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <a href="{% url 'product_detail' product.slug %}">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">{{ product.name }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <h3 class="footer__logo"><a href="{% url 'product_list' %}">Vyomé</a></h3>
+                <p>Timeless luxury fashion and accessories crafted for the discerning individual.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul class="footer__links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#choose">Why Us</a></li>
+                    <li><a href="#offer">Offers</a></li>
+                    <li><a href="#craft">Collections</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Contact Us</h4>
+                <p>Email: <a href="mailto:info@luxeelegance.com">info@luxeelegance.com</a></p>
+                <p>Phone: +91 9121744536</p>
+                <p>Address: Kompally, Hyderabad.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Stay Connected</h4>
+                <form class="footer__form" method="post" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" required />
+                    <button type="submit" name="subscribe">Subscribe</button>
+                </form>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/"><i class="ri-instagram-line"></i></a>
+                    <a href="https://x.com/?lang=en"><i class="ri-twitter-line"></i></a>
+                    <a href="https://www.facebook.com/"><i class="ri-facebook-line"></i></a>
+                    <a href="https://in.pinterest.com/"><i class="ri-pinterest-line"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bar">
+            <p>© 2025 Vyomé. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

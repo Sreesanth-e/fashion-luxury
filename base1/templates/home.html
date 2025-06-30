@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <title>Luxe Elegance | Luxury Fashion & Accessories</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+    --cream: #FFF5E1; 
+    --black: #1A1A1A; 
+    --grey: #666666;  
+    --red: #ff5555;   
+    --header-font: "Cormorant Garamond", serif;
+    --max-width: 1400px; 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    transition: background-color 0.5s ease;
+}
+
+.section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section__header {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: var(--header-font);
+    color: var(--cream);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.section__subheader {
+    color: var(--grey);
+    text-align: center;
+    margin-bottom: 2rem;
+    
+}
+.section__subheader1{
+    text-align: center;
+    margin-bottom: 9rem;
+
+    padding: 12px;
+    border-radius: 52px;
+    color: white;
+    background-color: white;
+    
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    color: var(--black);
+    background-color: var(--cream);
+    border: 1px solid var(--cream);
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--grey);
+    color: var(--cream);
+}
+.btn1 {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    color: var(--grey); /* Text color starts as cream */
+    background-color: var(--red); /* Background starts as red */
+    border: 1px solid var(--red); /* Border matches the red background */
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn1:hover {
+    background-color: var(--cream); /* Background changes to cream on hover */
+    color: var(--red); /* Text changes to red on hover */
+    border-color: var(--cream); /* Border matches cream on hover */
+}
+/* Navbar Styling */
+nav {
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(26, 26, 26, 0.95);
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav__logo a {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--header-font);
+    color: var(--cream);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 20px;
+    text-transform: uppercase;
+}
+
+.nav__logo a:hover {
+    color: var(--grey);
+    text-shadow: 0 0 10px rgba(255, 245, 225, 0.5);
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav__auth {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.link a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link a:hover {
+    color: var(--grey);
+    text-shadow: 0 0 5px rgba(255, 245, 225, 0.3);
+}
+
+.nav__menu__btn {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--cream);
+    cursor: pointer;
+}
+/* Account Dropdown Styling */
+.account-link {
+    position: relative;
+}
+
+.account-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the Account link */
+    right: 0; /* Align to the right of the nav__auth */
+    background: rgba(26, 26, 26, 0.95); /* Match navbar background */
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    min-width: 200px; /* Ensure it has enough width */
+}
+
+.account-link:hover .account-dropdown {
+    display: block; /* Show dropdown on hover */
+}
+
+.account-info {
+    font-size: 0.9rem;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Align text to the left */
+    gap: 0.5rem; /* Consistent spacing between items */
+    margin-bottom: 1rem; /* Space before logout button */
+}
+
+.account-info span {
+    display: block; /* Ensure each span takes full width */
+    line-height: 1.2; /* Improve readability */
+}
+
+.account-dropdown .link a {
+    color: var(--cream);
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.account-dropdown .link a:hover {
+    color: var(--grey);
+    text-shadow: 0 0 5px rgba(255, 245, 225, 0.3);
+}
+
+/* Ensure the icons align properly */
+.account-dropdown .link a i {
+    margin-right: 0.5rem;
+}
+
+/* Adjust nav__auth for better spacing */
+.nav__auth {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    position: relative;
+}
+
+/* Cart Link Styling */
+.cart-link a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    transition: all 0.3s ease;
+}
+
+.cart-link a:hover {
+    color: var(--grey);
+    text-shadow: 0 0 5px rgba(255, 245, 225, 0.3);
+}
+
+/* Cart Count Styling */
+.cart-count {
+    background: var(--red);
+    color: var(--cream);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+}
+
+/* Ensure icons align properly */
+.cart-link a i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .nav__auth {
+        display: none; /* Hide by default on mobile */
+    }
+    .nav__links.open + .nav__auth {
+        display: flex; /* Show when menu is open */
+        position: absolute;
+        top: calc(100% + 2rem); /* Position below nav__links */
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.link a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+/* Header/Landing Page */
+.header__container {
+    position: relative;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overlay h1 {
+    font-size: 8rem;
+    font-family: var(--header-font);
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.overlay p {
+    font-size: 1.5rem;
+    color: var(--grey);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1.5s ease forwards;
+}
+
+#canvas-container {
+    width: 50%;
+    height: 50%;
+    margin-top: 2rem;
+    z-index: 0;
+    opacity: 0.7; /* Subtle 3D effect */
+}
+.landing__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Other Sections */
+.choose__container, .modern__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.choose__grid, .modern__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.choose__card {
+    text-align: center;
+}
+
+.choose__card span {
+    font-size: 1.5rem;
+    color: var(--cream);
+}
+
+.choose__card h4 {
+    color: var(--cream);
+    margin: 1rem 0;
+}
+
+.choose__card p {
+    color: var(--grey);
+}
+
+.offer__container, .craft__container, .blog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.offer__card {
+    text-align: center;
+    background: var(--grey);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.offer__card1 {
+    width: 50vh;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.offer__card img {
+    width: 35vh;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.offer__card:hover {
+    transform: scale(1.05);
+    background: var(--cream);
+    color: var(--black);
+}
+
+.offer__card h4, .offer__card p {
+    color: inherit;
+}
+
+.testimonial__card {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--grey);
+    border-radius: 10px;
+    color: var(--cream);
+}
+
+.swiper {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+}
+
+.footer__container h4 {
+    color: var(--cream);
+}
+
+.footer__container p {
+    color: var(--grey);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--grey);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h2 {
+    font-family: var(--header-font);
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--cream);
+    background: transparent;
+    color: var(--cream);
+    border-radius: 5px;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--cream);
+    color: var(--black);
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background: var(--black);
+    color: var(--cream);
+}
+
+.modal-content .switch {
+    color: var(--cream);
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.messages p.error {
+    color: #ff5555;
+    margin-top: 1rem;
+}
+/* Footer Styling */
+.footer {
+    background: var(--black);
+    color: var(--cream);
+    border-top: 1px solid var(--grey);
+}
+
+.footer {
+    background: var(--black);
+    color: var(--cream);
+    border-top: 1px solid var(--grey);
+}
+
+.footer {
+    background: var(--black);
+    color: var(--cream);
+    border-top: 1px solid var(--grey);
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    padding: 4rem 1rem;
+}
+
+.footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer__logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--header-font);
+    color: var(--cream);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 2vh;
+    text-transform: uppercase;
+}
+
+.footer__logo a:hover {
+    color: var(--grey);
+    text-shadow: 0 0 10px rgba(255, 245, 225, 0.5);
+}
+
+.footer__col h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 1rem;
+}
+
+.footer__col p {
+    font-size: 0.9rem;
+    color: var(--grey);
+}
+
+.footer__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer__links a {
+    font-size: 0.9rem;
+    color: var(--cream);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer__links a:hover {
+    color: var(--grey);
+    padding-left: 0.5rem;
+}
+
+.footer__col a {
+    color: var(--cream);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer__col a:hover {
+    color: var(--grey);
+}
+
+.footer__form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.footer__form input {
+    padding: 0.75rem;
+    border: 1px solid var(--cream);
+    background: transparent;
+    color: var(--cream);
+    border-radius: 5px;
+    flex: 1;
+}
+
+.footer__form input::placeholder {
+    color: var(--grey);
+}
+
+.footer__form button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer__socials a {
+    font-size: 1.5rem;
+    color: var(--cream);
+    transition: all 0.3s ease;
+}
+
+.footer__socials a:hover {
+    color: var(--grey);
+    transform: scale(1.1);
+}
+
+.footer__bar {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(26, 26, 26, 0.95);
+    font-size: 0.85rem;
+    color: var(--grey);
+}
+.account-info {
+            font-size: 0.9rem;
+            color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+.account-info span {
+            margin-bottom: 0.25rem;
+        }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .footer__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer__links {
+        align-items: center;
+    }
+    .footer__form {
+        flex-direction: column;
+    }
+    .footer__socials {
+        justify-content: center;
+    }
+}
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .choose__container, .modern__container, .footer__container {
+        grid-template-columns: 1fr;
+    }
+    .offer__container, .craft__container, .blog__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nav__links { gap: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+    nav { padding: 1rem; }
+    .nav__links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 2rem;
+    }
+    .nav__links.open { display: flex; }
+    .nav__auth { display: none; }
+    .nav__menu__btn { display: block; }
+    .offer__container, .craft__container, .blog__grid {
+        grid-template-columns: 1fr;
+    }
+    .overlay h1 { font-size: 4rem; }
+    .overlay p { font-size: 1rem; }
+    #canvas-container { width: 80%; height: 40%; }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav__logo"><a href="{% url 'home' %}">Vyomé</a></div>
+            <ul class="nav__links" id="nav-links">
+                <li class="link"><a href="#home">Home</a></li>
+                <li class="link"><a href="#choose">Why Us</a></li>
+                <li class="link"><a href="#offer">Offers</a></li>
+                <li class="link"><a href="#craft">Collections</a></li>
+                <li class="link"><a href="#modern">Craftsmanship</a></li>
+                <li class="link"><a href="#testimonial">Testimonials</a></li>
+                <li class="link"><a href="#blog">Blog</a></li>
+            </ul>
+            <div class="nav__auth">
+                {% if not user.is_authenticated %}
+                    <div class="link"><a href="{% url 'login' %}" id="login-btn"><i class="ri-user-line"></i> Login</a></div>
+                    <div class="link"><a href="{% url 'signup' %}" id="signup-btn"><i class="ri-add-circle-line"></i> Sign Up</a></div>
+                {% else %}
+                    <div class="account-link link">
+                        <a href="#" class="account-toggle"><i class="ri-user-line"></i> Account</a>
+                        <div class="account-dropdown">
+                            <div class="account-info">
+                                <span>{{ user.username }}</span>
+                                <span>{{ user.email }}</span>
+                            </div>
+                            <div class="link"><a href="{% url 'logout' %}" id="logout-btn"><i class="ri-logout-circle-line"></i> Logout</a></div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="link cart-link">
+                    <a href="{% url 'cart_view' %}">
+                        <i class="ri-shopping-cart-line"></i> Cart
+                        {% if cart_count > 0 %}
+                            <span class="cart-count">{{ cart_count }}</span>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </nav>
+        <div class="section__container header__container" id="home">
+            <img src="https://www.prada.com/content/dam/pradanux/home_page/2025/02/Re-Nylon/pradasphere/pradasphere_home_DT.jpg/_jcr_content/renditions/cq5dam.web.1932.1932.webp" alt="Landing Page Background" class="landing__image">
+            <div class="header__overlay"></div>
+            <div class="overlay">
+                <h1>Fashion Fine</h1>
+                <div>
+                <p class="section__subheader1">Timeless Luxury Fashion & Accessories</p>
+                </div>
+                <a href="{% url 'product_list' %}"><button class="btn">Shop Now</button></a>
+                <div id="canvas-container"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-login">×</span>
+            <h2>Login</h2>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Sign In</button>
+                <span class="switch" id="switch-to-signup">Need an account? Sign Up</span>
+            </form>
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-signup">×</span>
+            <h2>Sign Up</h2>
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Register</button>
+                <span class="switch" id="switch-to-login">Already have an account? Login</span>
+            </form>
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="{{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <section class="section__container choose__container" id="choose">
+        <h2 class="section__header">Why Choose Vyomé</h2>
+        <p class="section__subheader">Unparalleled quality and sophistication</p>
+        <img src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=1200" class="offer__card1" alt="">
+        <div class="choose__grid">
+            <div class="choose__card">
+                <span><i class="ri-star-line"></i></span>
+                <h4>Exquisite Craftsmanship</h4>
+                <p>Handcrafted by master artisans</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-circle-line"></i></span>
+                <h4>Premium Materials</h4>
+                <p>Only the finest silks and leathers</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-time-line"></i></span>
+                <h4>Timeless Designs</h4>
+                <p>Elegance that transcends trends</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-shield-check-line"></i></span>
+                <h4>Lifetime Guarantee</h4>
+                <p>Confidence in every purchase</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container offer__container" id="offer">
+        <h2 class="section__header">Exclusive Offers</h2>
+        <p class="section__subheader"></p>
+        <div class="offer__container">
+            <div class="offer__card">
+                <img src="https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1733850970/811585_ICUA0_8155_001_100_0000_Light-G-Flat-watch-36mm.jpg" alt="Watch" />
+                <h4>Cream Chronograph</h4>
+                <p>$3,500 <span style="text-decoration: line-through;">$4,200</span></p>
+            </div>
+            <div class="offer__card">
+                <img src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1667471447/699439_UULHK_8576_001_082_0000_Light.jpg" alt="Bag" />
+                <h4>Grey Saffiano Clutch</h4>
+                <p>$1,800 <span style="text-decoration: line-through;">$2,100</span></p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/P/P3P/P3P04/16USF0480/P3P04_16US_F0480_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Scarf" />
+                <h4>mohair dress</h4>
+                <p>$3,200 <span style="text-decoration: line-through;">$3500</span></p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/P/P42/P424I/167CF0014/P424I_167C_F0014_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Scarf" />
+                <h4>Cotton polo sweater</h4>
+                <p>$900 <span style="text-decoration: line-through;">$999</span></p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/P/P27/P275IG/162GF0161/P275IG_162G_F0161_S_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Scarf" />
+                <h4>Washed chevron shorts</h4>
+                <p>$550 <span style="text-decoration: line-through;">$600</span></p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/G/GEP/GEP374/14PFF01AY/GEP374_14PF_F01AY_S_VMO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Scarf" />
+                <h4>Five-pocket denim jeans</h4>
+                <p>$1,000 <span style="text-decoration: line-through;">$1,050</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container craft__container" id="craft">
+        <h2 class="section__header">Our Collections</h2>
+        <p class="section__subheader"></p>
+        <div class="craft__container">
+            <div class="offer__card">
+                <img src="https://media.gucci.com/style/White_South_0_160_540x540/1721664981/814852_J8400_8106_002_100_0000_Light.jpg" alt="Necklace" />
+                <h4>Cream Serenity Necklace</h4>
+                <p>$1,250</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1716833723/796761_AADPK_1141_001_100_0000_Light-Large-tote-bag-with-GG-Shadow.jpg" alt="Bag" />
+                <h4>Grey Leather Tote</h4>
+                <p>$2,100</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/P/P3P/P3P48/15X6F0010/P3P48_15X6_F0010_S_OOO_MDF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Women's Dress"/>
+                <h4>Muslin dress</h4>
+                <p>$2,800</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://media.gucci.com/style/DarkGray_Center_0_0_1200x1200/1733850970/811585_ICUA0_8155_001_100_0000_Light-G-Flat-watch-36mm.jpg" alt="Men's Watch"/>
+                <h4>Men's GG Tote Bag</h4>
+                <p>$2,100</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradabkg_products/1/1CS/1CS121/2C7ZF0002/1CS121_2C7Z_F0002_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Women's Dress"/>
+                <h4>Studded leather belt</h4>
+                <p>$60</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://www.prada.com/content/dam/pradanux_products/2/2VZ/2VZ019/2DMGF0002/2VZ019_2DMG_F0002_V_OOL_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.2000.2000.jpg" alt="Men's Shoes"/>
+                <h4>Saffiano leather backpack</h4>
+                <p>$3,200</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container modern__container" id="modern">
+        <h2 class="section__header">Masterful Craftsmanship</h2>
+        <p class="section__subheader">Where tradition meets innovation</p>
+        <img src="https://images.pexels.com/photos/31422601/pexels-photo-31422601/free-photo-of-creative-art-workshop-with-female-artist.jpeg?auto=compress&cs=tinysrgb&w=1200" class="offer__card1" alt="">
+        <div class="modern__grid">
+            <div class="choose__card">
+                <span><i class="ri-hand-heart-line"></i></span>
+                <h4>Artisan Expertise</h4>
+                <p>Centuries of perfected techniques</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-leaf-line"></i></span>
+                <h4>Sustainable Luxury</h4>
+                <p>Eco-conscious materials</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-settings-3-line"></i></span>
+                <h4>Bespoke Design</h4>
+                <p>Tailored to your vision</p>
+            </div>
+            <div class="choose__card">
+                <span><i class="ri-award-line"></i></span>
+                <h4>Award-Winning</h4>
+                <p>Recognized excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section__container testimonial__container" id="testimonial">
+        <h2 class="section__header">Testimonials</h2>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="testimonial__card">
+                        <p>"The quality of their accessories is unmatched. My necklace is a true statement piece."</p>
+                        <h4>Emma Laurent</h4>
+                        <p>Fashion Editor</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial__card">
+                        <p>"Luxe Elegance redefined luxury for me. The craftsmanship is impeccable."</p>
+                        <h4>James Carter</h4>
+                        <p>Collector</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial__card">
+                        <p>"Vyomé is the epitome of luxury! The craftsmanship and attention to detail in every piece are simply breathtaking. I feel like royalty every time I wear their designs!"</p>
+                        <h4>Aarushi K.</h4>
+                        <p>Entrepreneur</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="testimonial__card">
+                        <p>"I have never experienced such exquisite fashion before. The blend of traditional elegance and modern sophistication makes Vyomé my go-to for exclusive couture."</p>
+                        <h4>JRohan M.</h4>
+                        <p>CEO</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="section__container blog__container" id="blog">
+        <h2 class="section__header">Fashion Insights</h2>
+        <div class="blog__grid">
+            <div class="offer__card">
+                <img src="https://www.reverbtimemag.com/reverb_images/blog_images/mastering-the-art-of-accessorizing-elevate-your-outfits-with-style-244a6bb46b2a92b9bd834c34aafdcfcf.jpg" alt="Blog" />
+                <h4>The Art of Accessorizing</h4>
+                <p>Mar 15, 2025</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://thebrowngirlbeautyguide.com/wp-content/uploads/2025/01/Beige-White-Simple-Aesthetic-Weekly-Vlog-YouTube-Thumbnail.png" alt="Blog" />
+                <h4>Luxury Trends 2025</h4>
+                <p>Apr 3, 2025</p>
+            </div>
+            <div class="offer__card">
+                <img src="https://cdn.shopify.com/s/files/1/0073/3537/9013/files/leather_care_1024x1024.jpg?v=1719492069" alt="Blog" />
+                <h4>Caring for Leather</h4>
+                <p>Apr 10, 2025</p>
+            </div>
+        </div>
+    </section>
+    
+        <footer class="footer">
+            <div class="section__container footer__container">
+                <div class="footer__col">
+                    <h3 class="footer__logo"><a href="{% url 'home' %}">Vyomé</a></h3>
+                    <p>Timeless luxury fashion and accessories crafted for the discerning individual.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#choose">Why Us</a></li>
+                        <li><a href="#offer">Offers</a></li>
+                        <li><a href="#craft">Collections</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact Us</h4>
+                    <p>Email: <a href="mailto:info@luxeelegance.com">gannojusreesanth@gmail.com</a></p>
+                    <p>Phone: +91 9121744536</p>
+                    <p>Address: Kompally, Hyderabad.</p>
+                </div>
+                <div class="footer__col">
+                    <h4>Stay Connected</h4>
+                    <form class="footer__form" method="post" action="{% url 'home' %}">
+                        {% csrf_token %}
+                        <input type="email" name="email" placeholder="Enter your email" required />
+                        <button type="submit" name="subscribe">Subscribe</button>
+                    </form>
+                    <div class="footer__socials">
+                        <a href="https://www.instagram.com/"><i class="ri-instagram-line"></i></a>
+                        <a href="https://x.com/?lang=en"><i class="ri-twitter-line"></i></a>
+                        <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F"><i class="ri-facebook-line"></i></a>
+                        <a href="https://in.pinterest.com/"><i class="ri-pinterest-line"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bar">
+                <p>&copy; 2025 Vyomé. All rights reserved.</p>
+            </div>
+        </footer>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>// Three.js - More Realistic Shirt and Frock Models
+        
+        
+        
+        // GSAP
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray(".offer__card").forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power2.out"
+            });
+        });
+        
+        const sections = [
+            { id: "#home", color: "#1A1A1A" }, // Black
+            { id: "#choose", color: "Darkgrey" }, // Grey
+            { id: "#offer", color: "#1A1A1A" }, // Black
+            { id: "#craft", color: "#666666" }, // Grey
+            { id: "#modern", color: "#1A1A1A" }, // Black
+            { id: "#testimonial", color: "#666666" }, // Grey
+            { id: "#blog", color: "#1A1A1A" } // Black
+        ];
+        
+        sections.forEach(section => {
+            ScrollTrigger.create({
+                trigger: section.id,
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => gsap.to("body", { backgroundColor: section.color, duration: 0.5 }),
+                onEnterBack: () => gsap.to("body", { backgroundColor: section.color, duration: 0.5 })
+            });
+        });
+        
+        // Swiper
+        const swiper = new Swiper('.swiper', {
+            pagination: { el: '.swiper-pagination', clickable: true },
+            loop: true
+        });
+        
+        // Mobile menu
+        const menuBtn = document.getElementById("menu-btn");
+        const navLinks = document.getElementById("nav-links");
+        menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+        
+        // Modal Logic
+        const loginBtn = document.getElementById("login-btn");
+        const signupBtn = document.getElementById("signup-btn");
+        const loginModal = document.getElementById("login-modal");
+        const signupModal = document.getElementById("signup-modal");
+        const closeLogin = document.getElementById("close-login");
+        const closeSignup = document.getElementById("close-signup");
+        const switchToSignup = document.getElementById("switch-to-signup");
+        const switchToLogin = document.getElementById("switch-to-login");
+        
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            loginModal.classList.add("active");
+        });
+        
+        signupBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            signupModal.classList.add("active");
+        });
+        
+        closeLogin.addEventListener("click", () => loginModal.classList.remove("active"));
+        closeSignup.addEventListener("click", () => signupModal.classList.remove("active"));
+        
+        loginModal.addEventListener("click", (e) => {
+            if (e.target === loginModal) loginModal.classList.remove("active");
+        });
+        
+        signupModal.addEventListener("click", (e) => {
+            if (e.target === signupModal) signupModal.classList.remove("active");
+        });
+        
+        switchToSignup.addEventListener("click", () => {
+            loginModal.classList.remove("active");
+            signupModal.classList.add("active");
+        });
+        
+        switchToLogin.addEventListener("click", () => {
+            signupModal.classList.remove("active");
+            loginModal.classList.add("active");
+        });
+        </script>
+</body>
+</html>
